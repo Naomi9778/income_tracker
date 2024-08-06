@@ -19,7 +19,7 @@ export const getCategory = async (req, res) => {
 export const createGategory = async (req, res) => {
     const {name, description, category_img} = req.body
     const queryText = `
-    INSERT INTO "category" (name, description, category_img)
+    INSERT INTO "category" (name, description, category_image)
     VALUES ($1, $2, $3) RETURNING *;`;
 
     try {

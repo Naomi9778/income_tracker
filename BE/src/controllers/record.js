@@ -20,11 +20,11 @@ export const getRecord = async (req, res) => {
 export const createRecord = async (req, res) => {
     const { name, amount, transaction_type, description, user_id, category_id } = req.body
     const queryText = `
-    INSERT INTO "record" (name, amount, transaction_type, description, user_id)
-    VALUES ($1, $2, $3, $4, $5) RETURNING *;`;
+    INSERT INTO "record" (name, amount, transaction_type, description, user_id, category_id)
+    VALUES ($1, $2, $3, $4, $5,$6) RETURNING *`;
 
     try {
-        await db.query(queryText, [name, amount, transaction_type, description, user_id]);
+        await db.query(queryText, [name, amount, transaction_type, description, user_id, category_id]);
     }
     catch (error) {
         console.log(error)
