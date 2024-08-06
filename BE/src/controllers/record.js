@@ -1,9 +1,11 @@
 import { db } from "../../db.js";
-//Get User
 
-export const getUser = async (req, res) => {
+
+//Get Record
+
+export const getRecord = async (req, res) => {
     const queryText = `
-    SELECT * FROM  users`
+    SELECT * FROM  record`
 
     try {
         const result = await db.query(queryText);
@@ -13,32 +15,32 @@ export const getUser = async (req, res) => {
         console.log(error)
     }
 };
-//Create user
+//Create record
 
-export const createUser = async (req, res) => {
-    const { email, name, password, avatarImg, currencyType } = req.body
+export const createRecord = async (req, res) => {
+    const { name, amount, transaction_type, description, user_id, category_id } = req.body
     const queryText = `
-    INSERT INTO "users" (email, name, password, avatarImg, currencyType)
+    INSERT INTO "record" (name, amount, transaction_type, description, user_id)
     VALUES ($1, $2, $3, $4, $5) RETURNING *;`;
 
     try {
-        await db.query(queryText, [email,name, password, avatarImg, currencyType]);
+        await db.query(queryText, [name, amount, transaction_type, description, user_id]);
     }
     catch (error) {
         console.log(error)
     }
-    res.send("user inserted Successfully")
+    res.send("record inserted Successfully")
 };
 
-// Update Users 
+// Update Record
 
-export const updateUser = async (req, res) => {
+export const updateRecord = async (req, res) => {
     const { id } = req.params;
-    const { email, name, password, avatarImg, currencyType } = req.body;
+    const {name, amount, transaction_type, description} = req.body;
 
     try {
-        const result = await db.query("UPDATE users SET email = $1, name = $2, password = $3, avatarImg = $4, currencyType = $5 WHERE id = $6 RETURNING *",
-            [email, name, password, avatarImg, currencyType, id]
+        const result = await db.query("UPDATE record SET name = $1, amount = $2, transaction_type = $3, description = $4 WHERE id = $6 RETURNING *",
+            [name, amount, transaction_type, description, id]
         );
         if (result.rows.length === 0) {
             return res.status(404).send("USER NOT FOUND")
@@ -54,13 +56,13 @@ export const updateUser = async (req, res) => {
 
 
 
-//Delete Users
+//Delete record
 
-export const deleteUser = async (req, res) => {
+export const deleteRecord = async (req, res) => {
     const { id } = req.params;
 
     try {
-        const result = await db.query("DELETE from users WHERE id = $1 RETURNING *",
+        const result = await db.query("DELETE from record WHERE id = $1 RETURNING *",
             [id]
         );
         if (result.rows.length === 0) {
@@ -68,7 +70,7 @@ export const deleteUser = async (req, res) => {
         }
         else {
             res.json(result.rows[0])
-            res.send("USER DELETED SUCCESSFULLY")
+            res.send("RECORD DELETED SUCCESSFULLY")
         }
     }
     catch (error) {
@@ -76,13 +78,13 @@ export const deleteUser = async (req, res) => {
     }
 };
 
-//Get one User
+//Get one Record
 
-export const getOneUser = async (req,res) => {
+export const getOneRecord = async (req,res) => {
     const { id } = req.params;
     console.log(id)
     try {
-        const result = await db.query("SELECT * FROM users WHERE  id = $1", [id]
+        const result = await db.query("SELECT * FROM record WHERE  id = $1", [id]
         );
         if (result.rows.length === 0) {
             return res.status(404).send("USER NOT FOUND")

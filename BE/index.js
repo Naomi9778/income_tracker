@@ -3,6 +3,8 @@ import bodyParser from "body-parser";
 import cors from "cors"
 import { db } from "./db.js"
 import { user } from "./src/routes/user.js";
+import { record } from "./src/routes/record.js";
+import { category } from "./src/routes/category.js";
 
 
 // const fs = require('node:fs');
@@ -12,6 +14,8 @@ const app = express()
 app.use(bodyParser.json())
 app.use(cors())
 app.use("/user", user)
+app.use("/record", record)
+app.use("/category", category)
 
 const port = 8000;
 
@@ -61,14 +65,19 @@ app.get("/createRecordTable", async (req, res) => {
   const tableQueryText = `
   CREATE TABLE IF NOT EXISTS "record" (
     id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
-    user_id TEXT,
-    name TEXT NOT NULL,
-    amount TEXT NOT NULL,
+    user_id uuid NOT NULL,
+    category_id uuid NOT NULL,
+    FOREIGN KEY (user_id)
+    references users(id),
+    FOREIGN KEY (category_id)
+    references category(id),
+    name TEXT,
+    amount REAL NOT NULL,
     transaction_type transaction_type DEFAULT 'EXP' NOT NULL,
     description TEXT,
     createdAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    updatedAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    category_id TEXT
+    updatedAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+    
     
   );
   `;
@@ -80,6 +89,33 @@ app.get("/createRecordTable", async (req, res) => {
     console.error(error);
   }
 });
+
+
+// Category Table 
+
+app.get("/createCategoryTable", async (req, res) => {
+  const tableQueryText = `
+  CREATE TABLE IF NOT EXISTS "category" (
+    id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
+    name VARCHAR(100),
+    description TEXT,
+    createdAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updatedAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    category_image TEXT
+    
+  );
+  `;
+
+  try {
+    await db.query(tableQueryText);
+    res.send(" Category table created successfully");
+  } catch (error) {
+    console.error(error);
+  }
+});
+
+
+
 
 
 
