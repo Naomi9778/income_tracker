@@ -9,10 +9,10 @@ export const getRecord = async (req, res) => {
 
     try {
         const result = await db.query(queryText);
-        res.send(result.rows)
+        return res.send(result.rows)
     }
     catch (error) {
-        console.log(error)
+        return res.send(error)
     }
 };
 //Create record
@@ -25,11 +25,12 @@ export const createRecord = async (req, res) => {
 
     try {
         await db.query(queryText, [name, amount, transaction_type, description, user_id, category_id]);
+        res.send("record inserted Successfully")
     }
     catch (error) {
-        console.log(error)
+        return res.send(error)
     }
-    res.send("record inserted Successfully")
+    
 };
 
 // Update Record
@@ -50,7 +51,7 @@ export const updateRecord = async (req, res) => {
         }
     }
     catch (error) {
-        console.log(error)
+        return res.send(error)
     }
 };
 
@@ -74,7 +75,7 @@ export const deleteRecord = async (req, res) => {
         }
     }
     catch (error) {
-        console.log(error)
+        return res.send(error)
     }
 };
 
@@ -94,8 +95,7 @@ export const getOneRecord = async (req,res) => {
         }
     }
     catch (error) {
-        console.log(error)
-        res.send(error)
+        return res.send(error)
     }
 }
 

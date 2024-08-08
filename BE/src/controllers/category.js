@@ -8,10 +8,10 @@ export const getCategory = async (req, res) => {
 
     try {
         const result = await db.query(queryText);
-        res.send(result.rows)
+        return res.send(result.rows)
     }
     catch (error) {
-        console.log(error)
+        return res.send(error)
     }
 };
 //Create category
@@ -24,11 +24,12 @@ export const createGategory = async (req, res) => {
 
     try {
         await db.query(queryText, [name, description, category_img]);
+        return res.send("Category create Successfully")
     }
     catch (error) {
-        console.log(error)
+        return res.send(error)
     }
-    res.send("Category create Successfully")
+    
 };
 
 // Update category
@@ -49,7 +50,7 @@ export const updateGategory = async (req, res) => {
         }
     }
     catch (error) {
-        console.log(error)
+        return res.send(error)
     }
 };
 
@@ -67,10 +68,10 @@ export const deleteGategory = async (req, res) => {
         }
         else {
             res.json(result.rows[0])
-            res.send("USER DELETED SUCCESSFULLY")
+            return res.send("USER DELETED SUCCESSFULLY")
         }
     }
     catch (error) {
-        console.log(error)
+        return res.send(error)
     }
 };

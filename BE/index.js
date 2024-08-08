@@ -17,7 +17,7 @@ app.use("/user", user)
 app.use("/record", record)
 app.use("/category", category)
 
-const port = 8000;
+const PORT = process.env.PORT;
 
 
 //install extension 
@@ -120,6 +120,6 @@ app.get("/createCategoryTable", async (req, res) => {
 
 
 
-app.listen(port, () => {
-  console.log(`Example app listening on port ${port}`)
+app.listen(PORT, () => {
+  console.log(`Example app listening on port ${PORT}`)
 })

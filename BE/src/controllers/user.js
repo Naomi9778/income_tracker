@@ -7,10 +7,10 @@ export const getUser = async (req, res) => {
 
     try {
         const result = await db.query(queryText);
-        res.send(result.rows)
+        return res.send(result.rows)
     }
     catch (error) {
-        console.log(error)
+        return res.send(error)
     }
 };
 //Create user
@@ -21,13 +21,15 @@ export const createUser = async (req, res) => {
     INSERT INTO "users" (email, name, password, avatarImg, currencyType)
     VALUES ($1, $2, $3, $4, $5) RETURNING *;`;
 
+
     try {
         await db.query(queryText, [email,name, password, avatarImg, currencyType]);
+        res.send("user inserted Successfully")
     }
     catch (error) {
-        console.log(error)
+        return res.send(error)
     }
-    res.send("user inserted Successfully")
+    
 };
 
 // Update Users 
@@ -48,7 +50,7 @@ export const updateUser = async (req, res) => {
         }
     }
     catch (error) {
-        console.log(error)
+        return res.send(error)
     }
 };
 
@@ -68,11 +70,11 @@ export const deleteUser = async (req, res) => {
         }
         else {
             res.json(result.rows[0])
-            res.send("USER DELETED SUCCESSFULLY")
+             return res.send("USER DELETED SUCCESSFULLY")
         }
     }
     catch (error) {
-        console.log(error)
+        return res.send(error)
     }
 };
 
@@ -92,8 +94,7 @@ export const getOneUser = async (req,res) => {
         }
     }
     catch (error) {
-        console.log(error)
-        res.send(error)
+        return res.send(error)
     }
 }
 
