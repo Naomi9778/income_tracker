@@ -81,10 +81,10 @@ export const deleteUser = async (req, res) => {
 //Get one User
 
 export const getOneUser = async (req,res) => {
-    const { id } = req.params;
-    console.log(id)
+    const { id, name,currencytype } = req.body;
+
     try {
-        const result = await db.query("SELECT * FROM users WHERE  id = $1", [id]
+        const result = await db.query("SELECT * FROM users WHERE  id = $1 OR name = $2, currencytype = $3", [id, name, currencytype]
         );
         if (result.rows.length === 0) {
             return res.status(404).send("USER NOT FOUND")

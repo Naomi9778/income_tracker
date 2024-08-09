@@ -5,7 +5,7 @@ const user = express.Router();
 
 user.route("/").get(getUser).post(createUser);
 user.route("/:id").delete(deleteUser).put(updateUser)
-user.route("/select/:id").get(getOneUser)
+user.route("/select").get(getOneUser)
 
 
 export { user }
