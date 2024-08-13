@@ -6,19 +6,19 @@ const LogIn = () => {
     return (
         <div className="grid w-full h-screen grid-cols-2 ">
             <div className="flex items-center justify-center ">
-                <form className="flex flex-col justify-center gap-10 w-[384px]">
-                    <LogoIcon />
+                <form className="flex flex-col items-center justify-center gap-10 w-[384px]">
+                    <LogoIcon  />
                     <div className="mb-8 space-y-1 text-center">
                         <h1 className="text-2xl font-semibold text-slate-900">Create Geld account</h1>
                         <p className="text-slate-700">Sign up below to create your Wallet account</p>
                     </div>
-                    <div className=" flex flex-col gap-4">
+                    <div className=" flex flex-col w-full gap-4">
                         <Input placeholder="Name" type="text" className="w-full bg-[#F3F4F6]" />
                         <Input placeholder="Email" type="email" className="w-full bg-[#F3F4F6]"/>
                         <Input placeholder="Passpord" type="password" className="w-full bg-[#F3F4F6]"/>
                         <Input placeholder="Re-asspord" type="password" className="w-full bg-[#F3F4F6]"/>
                     </div>
-                    <div>
+                    <div className=" w-full">
                         <Button className="w-full rounded-xl bg-[#0166FF] ">Sign up</Button>
                     </div>
                     <div className="flex justify-center gap-2">
