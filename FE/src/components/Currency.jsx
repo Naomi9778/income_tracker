@@ -21,8 +21,8 @@ const Currency = () => {
           <SelectValue placeholder="MNT Mongolian Tugrik" />
         </SelectTrigger>
         <SelectContent>
-          <SelectItem value="light">MNT Mongolian Tigrik</SelectItem>
-          <SelectItem value="dark">USD United Stated Dollar</SelectItem>
+          <SelectItem value="1">MNT Mongolian Tigrik</SelectItem>
+          <SelectItem value="2">USD United Stated Dollar</SelectItem>
 
         </SelectContent>
       </Select>
