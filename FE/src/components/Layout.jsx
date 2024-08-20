@@ -1,8 +1,15 @@
-import React from 'react'
+import React, { useEffect } from 'react'
+import Navbar from './Navbar'
+import { useRouter } from 'next/router'
 
-export const Layout = () => {
+export const LayOut = ({children}) => {
+  
   return (
-    <div>Layout</div>
+    
+    <div>
+     <Navbar/>
+     {children}
+    </div>
   )
 }
 
