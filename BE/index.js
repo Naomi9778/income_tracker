@@ -5,6 +5,7 @@ import { db } from "./db.js"
 import { user } from "./src/routes/user.js";
 import { record } from "./src/routes/record.js";
 import { category } from "./src/routes/category.js";
+import { auth } from "./src/routes/auth.js";
 
 
 // const fs = require('node:fs');
@@ -16,6 +17,7 @@ app.use(cors())
 app.use("/user", user)
 app.use("/record", record)
 app.use("/category", category)
+app.use("/auth", auth)
 
 const PORT = process.env.PORT;
 

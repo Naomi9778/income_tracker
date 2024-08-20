@@ -1,5 +1,16 @@
 import { db } from "../../db.js";
 
+//new dashboard Chart
+
+export const getBArChartData = async (req,res) => {
+    try {
+        const result = await db.query(queryText);
+        console.log(result.rows)
+    } catch (error) {
+        console.log(error)
+    }
+
+}
 
 //Get Record
 

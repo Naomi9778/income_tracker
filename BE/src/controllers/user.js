@@ -16,15 +16,15 @@ export const getUser = async (req, res) => {
 //Create user
 
 export const createUser = async (req, res) => {
-    const { email, name, password, avatarImg, currencyType } = req.body
+    const { email, name, password } = req.body
     const queryText = `
-    INSERT INTO "users" (email, name, password, avatarImg, currencyType)
-    VALUES ($1, $2, $3, $4, $5) RETURNING *;`;
+    INSERT INTO "users" (email, name, password)
+    VALUES ($1, $2, $3) RETURNING *;`;
 
 
     try {
-        await db.query(queryText, [email,name, password, avatarImg, currencyType]);
-        res.send("user inserted Successfully")
+        await db.query(queryText, [email,name, password]);
+        return res.send("user inserted Successfully")
     }
     catch (error) {
         return res.send(error)
@@ -99,4 +99,6 @@ export const getOneUser = async (req,res) => {
 }
 
 
-//Filter query 
+//Password search 
+
+
