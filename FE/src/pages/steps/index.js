@@ -25,7 +25,7 @@ const Steps = () => {
                     <>
                         <div className="flex flex-col justify-center items-center"
                             key={index} >
-                            <div className={`${currentIndex >= index ? " relative flex justify-center items-center size-5 rounded-full text-white bg-[#0166FF]" : " flex justify-center items-center bg-grey size-5 rounded-full bg-[#E5E7EB] text-black"}`}>{index + 1}
+                            <div className={`${currentIndex >= index ? " relative flex justify-center items-center size-5 rounded-full text-white bg-[#0166FF]" : " flex justify-center items-center bg-gray size-5 rounded-full bg-[#E5E7EB] text-black"}`}>{index + 1}
                                 
                                 <div>{currentIndex > index ? <div className=" absolute top-0 translate-y-1/2  h-[4px] w-20 bg-[#0166FF] mt-[8px]" /> : null}</div>
                             </div>

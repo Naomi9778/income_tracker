@@ -14,7 +14,8 @@ const Navbar = () => {
 
     return (
         
-        <div className="flex justify-between items-center w-[1216px] mx-auto p-4 ">
+        <div className=" w-full bg-white">
+            <div className="flex justify-between items-center w-[1216px] mx-auto p-4 bg-white ">
             <div className="flex items-center gap-6  ">
             <Vector />
             <Link href="/dashboard/main" className={pathname.includes('main') && 'font-bold'}>Dashboard</Link>
@@ -27,6 +28,7 @@ const Navbar = () => {
                 <AvatarFallback>CN</AvatarFallback>
             </Avatar>
             </div>
+        </div>
         </div>
     )
 }

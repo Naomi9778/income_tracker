@@ -1,6 +1,10 @@
 import React from 'react'
 import { ChartContainer } from './ui/chart'
-import { Bar, BarChart } from 'recharts'
+import { Bar, BarChart, XAxis, YAxis } from 'recharts'
+import BlueCard from './BlueCard'
+import IncomeCard from './IncomeCard'
+import ExpenseCard from './ExpenseCard'
+import LastRecord from './LastRecord'
 
 
 
@@ -15,24 +19,38 @@ const BarCharts = () => {
     ]
     const chartConfig = {
         desktop: {
-          label: "Desktop",
-          color: "#2563eb",
+            label: "Desktop",
+            color: "#2563eb",
         },
         mobile: {
-          label: "Mobile",
-          color: "#60a5fa",
+            label: "Mobile",
+            color: "#60a5fa",
         }
     }
 
 
-    
+
     return (
-        <ChartContainer config={chartConfig} className="min-h-[200px] w-full">
-            <BarChart accessibilityLayer data={chartData}>
-                <Bar dataKey="desktop" fill="var(--color-desktop)" radius={4} />
-                <Bar dataKey="mobile" fill="var(--color-mobile)" radius={4} />
-            </BarChart>
-        </ChartContainer>
+        <div className=' flex flex-col mt-2 w-[1216px] h-screen mx-auto p-4'>
+            <div className='flex justify-between'>
+                <BlueCard />
+                <IncomeCard />
+                <ExpenseCard />
+            </div>
+            <div className='w-[588px] h-fit mt-[40px] bg-white border border-slate-500 rounded-xl p-4 '>
+                <div className='py-4'>Income Expence</div>
+                <ChartContainer config={chartConfig} className="h-fit w-full">
+
+                    <BarChart accessibilityLayer data={chartData}>
+                        <YAxis></YAxis>
+                        <XAxis></XAxis>
+                        <Bar dataKey="desktop" fill="var(--color-desktop)" radius={4} />
+                        <Bar dataKey="mobile" fill="var(--color-mobile)" radius={4} />
+                    </BarChart>
+                </ChartContainer>
+            </div> 
+            <LastRecord/>
+        </div>
     )
 }
 

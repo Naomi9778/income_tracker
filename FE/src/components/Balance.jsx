@@ -9,7 +9,7 @@ const Balance = () => {
 
     <CoinIcon />
     <p>Set up your cash Balance</p>
-    <Input type="text" className="w-full h-[48px] bg-[#F3F4F6]" />
+    <Input type="number" className="w-full h-[48px] bg-[#F3F4F6]" />
     <p>How much cash do you have in your wallet?</p>
     
   </div>
