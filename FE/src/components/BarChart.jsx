@@ -5,6 +5,7 @@ import BlueCard from './BlueCard'
 import IncomeCard from './IncomeCard'
 import ExpenseCard from './ExpenseCard'
 import LastRecord from './LastRecord'
+import RecordsCArd from './RecordsCard'
 
 
 
@@ -20,36 +21,37 @@ const BarCharts = () => {
     const chartConfig = {
         desktop: {
             label: "Desktop",
-            color: "#2563eb",
+            color: "#84CC16",
         },
         mobile: {
             label: "Mobile",
-            color: "#60a5fa",
+            color: "#F97316",
         }
     }
 
 
 
     return (
-        <div className=' flex flex-col mt-2 w-[1216px] h-screen mx-auto p-4'>
+        <div className=' flex flex-col mt-2 w-[1216px]  mx-auto p-4'>
             <div className='flex justify-between'>
                 <BlueCard />
                 <IncomeCard />
                 <ExpenseCard />
             </div>
-            <div className='w-[588px] h-fit mt-[40px] bg-white border border-slate-500 rounded-xl p-4 '>
+            <div className='w-[540px] mt-[40px] bg-white border border-slate-500 rounded-xl p-4 '>
                 <div className='py-4'>Income Expence</div>
-                <ChartContainer config={chartConfig} className="h-fit w-full">
+                <ChartContainer config={chartConfig} className="w-full h-[162px]">
 
                     <BarChart accessibilityLayer data={chartData}>
                         <YAxis></YAxis>
                         <XAxis></XAxis>
-                        <Bar dataKey="desktop" fill="var(--color-desktop)" radius={4} />
-                        <Bar dataKey="mobile" fill="var(--color-mobile)" radius={4} />
+                        <Bar dataKey="desktop" fill="var(--color-desktop)" radius={6} />
+                        <Bar dataKey="mobile" fill="var(--color-mobile)" radius={6} />
                     </BarChart>
                 </ChartContainer>
             </div> 
             <LastRecord/>
+        
         </div>
     )
 }
