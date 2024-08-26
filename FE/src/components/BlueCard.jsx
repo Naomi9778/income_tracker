@@ -1,6 +1,6 @@
 import React from 'react'
 import Image from 'next/image'
-import Large from '../assets/Large.png'
+import image from '../assets/image.png'
 
 
 const BlueCard = () => {
@@ -8,7 +8,7 @@ const BlueCard = () => {
         <div className='w-[385px] h-[220px] bg-[#0166FF] rounded-xl'>
             <div>
                 <Image
-                    src={Large}
+                    src={image}
                     width={500}
                     height={500}
                     alt="Picture of the author"
