@@ -6,6 +6,7 @@ import IncomeCard from './IncomeCard'
 import ExpenseCard from './ExpenseCard'
 import LastRecord from './LastRecord'
 import RecordsCArd from './RecordsCard'
+import PieCharts from './PieChart'
 
 
 
@@ -38,20 +39,27 @@ const BarCharts = () => {
                 <IncomeCard />
                 <ExpenseCard />
             </div>
-            <div className='w-[540px] mt-[40px] bg-white border border-slate-500 rounded-xl p-4 '>
-                <div className='py-4'>Income Expence</div>
-                <ChartContainer config={chartConfig} className="w-full h-[162px]">
+            <div className='flex justify-between items-center'>
+                <div className='w-[540px] mt-[40px] bg-white border border-slate-500 rounded-xl p-4 '>
+                    <div className='py-4'>Income Expence</div>
+                    <ChartContainer config={chartConfig} className="w-full h-[162px]">
 
-                    <BarChart accessibilityLayer data={chartData}>
-                        <YAxis></YAxis>
-                        <XAxis></XAxis>
-                        <Bar dataKey="desktop" fill="var(--color-desktop)" radius={6} />
-                        <Bar dataKey="mobile" fill="var(--color-mobile)" radius={6} />
-                    </BarChart>
-                </ChartContainer>
-            </div> 
-            <LastRecord/>
-        
+                        <BarChart accessibilityLayer data={chartData}>
+                            <YAxis></YAxis>
+                            <XAxis></XAxis>
+                            <Bar dataKey="desktop" fill="var(--color-desktop)" radius={6} />
+                            <Bar dataKey="mobile" fill="var(--color-mobile)" radius={6} />
+                        </BarChart>
+                    </ChartContainer>
+                </div>
+                <div className=' flex w-[540px] mt-[40px] bg-white border border-slate-500 rounded-xl p-4'>
+                <div className='py-4'>Income Expence</div>
+                    <PieCharts />
+
+                </div>
+            </div>
+            <LastRecord />
+
         </div>
     )
 }

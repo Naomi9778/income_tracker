@@ -108,7 +108,6 @@ const SelectSeparator = React.forwardRef(({ className, ...props }, ref) => (
     className={cn("-mx-1 my-1 h-px bg-slate-100 dark:bg-slate-800", className)}
     {...props} />
 ))
-
 SelectSeparator.displayName = SelectPrimitive.Separator.displayName
 
 export {
@@ -123,6 +122,3 @@ export {
   SelectScrollUpButton,
   SelectScrollDownButton,
 }
-
-
-
